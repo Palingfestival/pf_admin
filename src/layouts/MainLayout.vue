@@ -45,17 +45,29 @@
         </div>
       </q-page>
     </q-page-container>
+
+    <q-drawer
+      show-if-above
+      v-model="drawerRightOpen"
+      side="right"
+      width="200"
+      class="drawer-border"
+    >
+      <SidebarRight ref="sidebarRight" />
+    </q-drawer>
   </q-layout>
 </template>
 
 <script>
 import { useAuthStore } from 'stores/auth'
 import MedewerkerForm from 'components/medewerkerComponent.vue'
+import SidebarRight from 'components/sideBarRight.vue'
 
 export default {
   name: 'MainLayout',
   components: {
     MedewerkerForm,
+    SidebarRight,
   },
   computed: {
     authStore() {

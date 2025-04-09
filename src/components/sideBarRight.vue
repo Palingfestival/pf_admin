@@ -8,18 +8,16 @@
 <script>
 import { ref, onMounted } from 'vue'
 import { api } from 'boot/axios'
-import { useAuthStore } from 'stores/auth'
 
 export default {
   name: 'MedewerkerTree',
   setup() {
     const treeNodes = ref([])
-    const authStore = useAuthStore()
 
     // Fetch the data from the API endpoint
     const fetchData = async () => {
       try {
-        const response = await api.get(`/medewerkerstree?vereniging=${authStore.vereniging}`)
+        const response = await api.get(`/adminmedewerkerstree`)
         // Transform the API data into tree nodes
         treeNodes.value = transformData(response.data)
       } catch (error) {
